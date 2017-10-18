@@ -14,7 +14,16 @@
     <div class="collapse navbar-collapse navbar-right" id="mainNavbar">
         <ul class="nav navbar-nav">
             @if (Auth::user())
-                <li><a class="raw-margin-right-24" href="/logout">Logout</a></li>
+                <li><a href="{!! url('logout') !!}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                        <span class="fa fa-sign-out"></span>
+                        Logout
+                    </a>
+                </li>
+                <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
             @endif
         </ul>
     </div>

@@ -15,5 +15,14 @@
     </div>
     @if (Auth::user())
         <a class="item" href="/logout">Logout</a>
+        <a href="{!! url('logout') !!}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            <span class="fa fa-sign-out"></span>
+            Logout
+        </a>
+        <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
     @endif
 </div>
